@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Официальное бюро находок Туркменистана. Помогаем вернуть потерянные вещи владельцам быстро и надежно.">
+    <meta name="keywords" content="бюро находок, потерял вещь, нашел вещь, Туркменистан, TizTapar, найти потерянное, вернуть вещь, потерянные документы, находки Ашхабад">
+    <title>TizTapar | Туркменистан</title>
+    <meta name="author" content="TizTapar">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="TizTapar | Бюро-Находок" />
+    <meta property="og:description" content="Официальное бюро-находок по всему Туркменистану." />
+    <meta property="og:image" content="https://ciriusx.github.io/TizTapar/tiz_tapar-main.jpg" />
+    <meta property="og:url" content="https://ciriusx.github.io/TizTapar/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TizTapar | Бюро-Находок" />
+    <meta name="twitter:description" content="Официальное бюро-находок по всему Туркменистану." />
+    <meta name="twitter:image" content="https://ciriusx.github.io/TizTapar/tiz_tapar-main.jpg" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://ciriusx.github.io/TizTapar/" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="tiz_tapar-ico.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="tiz_tapar-main.jpg">
+    <style>
+        /* Глобальные стили */
+        :root {
+            --primary-bg: #FFFFFF; /* 60% */
+            --secondary-bg: #E0E0E0; /* 30% */
+            --accent-green: #AE0E28;
+            --accent-red: #590813;
+            --accent-orange: #FF5722; /* Оранжевый для кнопки */
+            --primary-white: #FFFFFF; /* Белый цвет */
+            --dark-text: #333333;
+            --light-text: #555555;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Raleway', sans-serif
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-body);
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6,
+        .section-title,
+        .logo-text,
+        nav ul li a,
+        .btn {
+            font-family: var(--font-heading);
+        }
+
+        h1, h2, h3, .section-title {
+            font-weight: 600; /* Montserrat Semi-Bold */
+        }
+
+        h4, h5, h6, .btn {
+            font-weight: 500; /* Montserrat Medium */
+        }
+
+        input, button, textarea, select {
+            font-family: inherit;
+            font-weight: inherit;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            font-size: 2.2rem;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-green);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            margin: 10px 5px;
+        }
+
+        .btn-secondary {
+            background-color: var(--accent-red);
+            color: white;
+            border: none;
+            margin: 10px 5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: var(--primary-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        /* Стили для кнопки "Наверх" */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-green);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: #FF0000;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(230, 74, 25, 0.4);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 49px;
+            width: auto;
+            margin-right: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-green);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-green);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: var(--dark-text);
+            cursor: pointer;
+        }
+
+        /* Главный баннер */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('tiz_tapar-banner_webp.webp') center/cover;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            color: var(--light-text);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Статистика */
+        .stats {
+            background-color: var(--secondary-bg);
+            padding: 40px 0;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+        }
+
+        /* Преимущества */
+        .benefits {
+            background-color: var(--primary-bg);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+
+        .benefit-card p {
+            color: var(--light-text);
+        }
+
+        /* Лента находок */
+        .latest-finds {
+            background-color: var(--secondary-bg);
+        }
+
+        .finds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .find-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .find-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .find-img {
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+        }
+
+        .find-img i {
+            font-size: 4rem;
+        }
+
+        .find-content {
+            padding: 20px;
+        }
+
+        .find-category {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .find-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .find-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        /* Формы */
+        .form-section {
+            background-color: var(--primary-bg);
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 40px;
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-green);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-footer {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Как это работает */
+        .process {
+            background-color: var(--secondary-bg);
+        }
+
+        .process-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .process-column {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+        }
+
+        .process-column h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+            font-size: 1.8rem;
+        }
+
+        .process-step {
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            margin-bottom: 8px;
+            color: var(--dark-text);
+        }
+
+        .step-content p {
+            color: var(--light-text);
+        }
+
+        /* Контакты */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+
+        .contact-info {
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background: var(--accent-red);
+        }
+
+        /* Подвал */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-list i {
+            color: var(--accent-white);
+            font-size: 1rem;
+            margin-top: 4px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-green);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-green);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+        font-size: 1.8rem;
+        background: none;
+        border: none;
+        color: var(--dark-text);
+        cursor: pointer;
+        transition: transform 0.4s ease;
+        position: relative;
+        z-index: 1001;
+    }
+
+    .mobile-menu-btn.active {
+        transform: rotate(90deg);
+    }
+
+    nav ul {
+        display: none;
+        position: fixed;
+        top: 80px; /* Начинаем отступ от шапки */
+        left: 0;
+        width: 100%;
+        background: var(--primary-bg);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        z-index: 1000;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+    }
+
+    @keyframes menuItemAppear {
+        from {
+            opacity: 0;
+            transform: translateY(-15px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    nav ul.show {
+        display: flex;
+        max-height: 100vh;
+    }
+
+    nav ul.show li {
+        opacity: 0;
+        animation: menuItemAppear 0.4s ease-out forwards;
+        margin: 10px 0;
+    }
+
+    nav ul.show li:nth-child(1) { animation-delay: 0.1s; }
+    nav ul.show li:nth-child(2) { animation-delay: 0.2s; }
+    nav ul.show li:nth-child(3) { animation-delay: 0.3s; }
+    nav ul.show li:nth-child(4) { animation-delay: 0.4s; }
+    nav ul.show li:nth-child(5) { animation-delay: 0.5s; }
+    nav ul.show li:nth-child(6) { animation-delay: 0.6s; }
+
+    nav ul li {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    nav ul li a {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2rem;
+        border-radius: 8px;
+        background: rgba(174, 14, 40, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+        background: rgba(174, 14, 40, 0.1);
+        transform: translateX(5px);
+    }
+
+    /* Остальные стили для 768px */
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Raleway:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Шапка сайта -->
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <a href="#home">
+                <img src="tiz_tapar-main-logo.png" alt="TizTapar Logo">
+            </a>
+        </div>
+        <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+        </button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#lost">Я потерял</a></li>
+                    <li><a href="#found">Я нашел</a></li>
+                    <li><a href="#finds">База находок</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Потеряли? Нашли? <br>Мы поможем вернуть!</h1>
+            <p>Официальное бюро находок Туркменистана. Вернем ваши вещи быстро, надежно и с заботой.</p>
+            <div class="hero-btns">
+                <a href="#lost" class="btn btn-primary"><i class="fas fa-search"></i> Я потерял вещь</a>
+                <a href="#found" class="btn btn-secondary"><i class="fas fa-hands-helping"></i> Я нашел вещь</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">О TizTapar</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; margin-bottom: 30px;">
+                    Наша миссия - возвращать потерянные вещи их владельцам. Мы верим, что каждая находка имеет свою историю,
+                    и каждый человек заслуживает шанс вернуть то, что ему дорого.
+                </p>
+                <p style="font-size: 1.2rem;">
+                    Наши принципы: честность, оперативность и уважение к каждому обращению. Мы работаем по всей территории
+                    Туркменистана, объединяя находки и их владельцев.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Статистика -->
+    <section class="stats">
+        <div class="container stats-container">
+            <div class="stat-item">
+                <h3>5,321</h3>
+                <p>Вернутых вещей</p>
+            </div>
+            <div class="stat-item">
+                <h3>4,890</h3>
+                <p>Помощь людям</p>
+            </div>
+            <div class="stat-item">
+                <h3>98%</h3>
+                <p>Удовлетворенных клиентов</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Работаем для вас</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Наши преимущества</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Бесплатно</h3>
+                    <p>Все наши услуги абсолютно бесплатны для владельцев вещей</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Быстро</h3>
+                    <p>Оперативная обработка заявок и поиск владельцев</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Надежно</h3>
+                    <p>Официальная процедура возврата с подтверждением</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Лента находок -->
+    <section class="latest-finds" id="finds">
+        <div class="container">
+            <h2 class="section-title">Самые свежие находки</h2>
+            <div class="finds-grid">
+                <div class="find-card">
+                    <div class="find-img">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="find-content">
+                        <span class="find-category">Телефон</span>
+                        <h3 class="find-title">Смартфон Samsung черный</h3>
+                        <p>Найден в районе Арчабил, парк "Мир"</p>
+                        <div class="find-meta">
+                            <span>15.10.2023</span>
+                            <span>ID: #24578</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="find-card">
+                    <div class="find-img">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="find-content">
+                        <span class="find-category">Кошелек</span>
+                        <h3 class="find-title">Кожаный кошелек черный</h3>
+                        <p>Найден в ТЦ "Беркарар", кафе "Нур"</p>
+                        <div class="find-meta">
+                            <span>14.10.2023</span>
+                            <span>ID: #24577</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="find-card">
+                    <div class="find-img">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="find-content">
+                        <span class="find-category">Ключи</span>
+                        <h3 class="find-title">Связка ключей с брелоком</h3>
+                        <p>Найдено на остановке "15 мкр"</p>
+                        <div class="find-meta">
+                            <span>14.10.2023</span>
+                            <span>ID: #24576</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="find-card">
+                    <div class="find-img">
+                        <i class="fas fa-passport"></i>
+                    </div>
+                    <div class="find-content">
+                        <span class="find-category">Документы</span>
+                        <h3 class="find-title">Паспорт гражданина ТМ</h3>
+                        <p>Найден в маршрутке №25</p>
+                        <div class="find-meta">
+                            <span>13.10.2023</span>
+                            <span>ID: #24575</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#finds" class="btn btn-primary">Смотреть все находки</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма "Я потерял" -->
+    <section class="form-section" id="lost">
+        <div class="container">
+            <h2 class="section-title">Я потерял вещь</h2>
+            <div class="form-container">
+                <h3 class="form-title">Поиск в базе находок</h3>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="category">Категория *</label>
+                            <select class="form-control" id="category" required>
+                                <option value="">Выберите категорию</option>
+                                <option value="phone">Телефон</option>
+                                <option value="documents">Документы/Кошелек</option>
+                                <option value="keys">Ключи</option>
+                                <option value="jewelry">Украшения</option>
+                                <option value="bag">Сумка/Рюкзак</option>
+                                <option value="clothes">Одежда</option>
+                                <option value="animals">Животные</option>
+                                <option value="other">Прочее</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Дата потери *</label>
+                            <input type="date" class="form-control" id="date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Место потери *</label>
+                        <input type="text" class="form-control" id="location" placeholder="Район, улица, ТЦ, маршрут..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Описание *</label>
+                        <textarea class="form-control" id="description" rows="3" placeholder="Цвет, бренд, приметы (без уникальных деталей)" required></textarea>
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary">Найти в базе</button>
+                    </div>
+                </form>
+
+                <div style="text-align: center; margin: 40px 0 20px;">
+                    <h3>Не нашли? Подайте заявку!</h3>
+                </div>
+
+                <form>
+                    <div class="form-group">
+                        <label for="category2">Категория потерянной вещи *</label>
+                        <select class="form-control" id="category2" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="phone">Телефон</option>
+                            <option value="documents">Документы/Кошелек</option>
+                            <option value="keys">Ключи</option>
+                            <option value="jewelry">Украшения</option>
+                            <option value="bag">Сумка/Рюкзак</option>
+                            <option value="clothes">Одежда</option>
+                            <option value="animals">Животные</option>
+                            <option value="other">Прочее</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description2">Подробное описание *</label>
+                        <textarea class="form-control" id="description2" rows="4" placeholder="Опишите вещь максимально подробно..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="description2">Комментарий</label>
+                        <textarea class="form-control" id="description2-comment" rows="2" placeholder="Короткий комментарий" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date2">Дата потери *</label>
+                            <input type="date" class="form-control" id="date2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location2">Место потери *</label>
+                            <input type="text" class="form-control" id="location2" placeholder="Район, улица, ТЦ, маршрут..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="+993" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="example@mail.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Фото похожей вещи (если есть)</label>
+                        <input type="file" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" required>
+                            Я согласен с правилами обработки данных и пользовательским соглашением
+                        </label>
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-secondary">Отправить заявку</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма "Я нашел" -->
+    <section class="form-section" id="found" style="background-color: var(--secondary-bg);">
+        <div class="container">
+            <h2 class="section-title">Я нашел вещь</h2>
+            <div class="form-container">
+                <h3 class="form-title">Форма сдачи находки</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="found-category">Категория находки *</label>
+                        <select class="form-control" id="found-category" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="phone">Телефон</option>
+                            <option value="documents">Документы/Кошелек</option>
+                            <option value="keys">Ключи</option>
+                            <option value="jewelry">Украшения</option>
+                            <option value="bag">Сумка/Рюкзак</option>
+                            <option value="clothes">Одежда</option>
+                            <option value="animals">Животные</option>
+                            <option value="other">Прочее</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="found-date">Дата находки *</label>
+                            <input type="date" class="form-control" id="found-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="found-location">Место находки *</label>
+                            <input type="text" class="form-control" id="found-location" placeholder="Точный адрес или ориентиры..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="found-description">Описание находки *</label>
+                        <textarea class="form-control" id="found-description" rows="3" placeholder="Общее описание без уникальных деталей владельца" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="found-description">Комментарий к находке</label>
+                        <textarea class="form-control" id="found-comment" rows="1" placeholder="Короткий комментарий" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="found-photo">Фото находки *</label>
+                        <input type="file" class="form-control" id="found-photo" required>
+                        <small>Пожалуйста, скройте конфиденциальные детали (номера документов, карт и т.д.)</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="founder-phone">Ваш телефон *</label>
+                            <input type="tel" class="form-control" id="founder-phone" placeholder="+993" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="founder-email">Ваш Email</label>
+                            <input type="email" class="form-control" id="founder-email" placeholder="example@mail.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="handover">Куда сдать? *</label>
+                        <select class="form-control" id="handover" required>
+                            <option value="">Выберите вариант</option>
+                            <option value="point">Принести в пункт приема</option>
+                            <option value="courier">Вызвать курьера (бесплатно)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" required>
+                            Я согласен с правилами приема находок и пользовательским соглашением
+                        </label>
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary">Сдать находку</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>TizTapar</h3>
+                    <p style="color: #aaa; margin-bottom: 20px;">Официальное бюро находок Туркменистана. Помогаем возвращать потерянные вещи с 2018 года.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Полезные ссылки</h3>
+                    <ul>
+                        <li><a href="#how">Как это работает</a></li>
+                        <li><a href="#finds">База находок</a></li>
+                        <li><a href="#">Истории успеха</a></li>
+                        <li><a href="#">FAQ - Частые вопросы</a></li>
+                        <li><a href="#">Блог и советы</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>Туркменистан, Ашхабад</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>+99361 37 24 38</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>tiztapar@gmail.com</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <div>Пн-Пт: 8:00 AM - 5:00 PM</div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 TizTapar - Бюро находок Туркменистана. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Мобильное меню
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('nav ul');
+
+    if (mobileMenuBtn && navMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+            if (navMenu.classList.contains('show')) {
+                // Анимация закрытия
+                navMenu.classList.remove('show');
+                navMenu.classList.add('hide');
+
+                setTimeout(() => {
+                    navMenu.classList.remove('hide');
+                }, 400); // Должно совпадать с длительностью анимации
+            } else {
+                // Анимация открытия
+                navMenu.classList.add('show');
+            }
+
+            this.classList.toggle('active');
+        });
+    }
+
+    // Плавная прокрутка
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+
+                // Закрываем мобильное меню после клика
+                if (navMenu.classList.contains('show')) {
+                    navMenu.classList.remove('show');
+                }
+            }
+        });
+    });
+
+    // Валидация телефона
+    const phoneInputs = document.querySelectorAll('input[type="tel"]');
+phoneInputs.forEach(input => {
+    input.addEventListener('input', function() {
+        // Удаляем все символы, кроме цифр и плюса
+        let numbers = this.value.replace(/[^\d+]/g, '');
+
+        // Оставляем только первый плюс, если он есть
+        if (numbers.includes('+')) {
+            numbers = '+' + numbers.replace(/\+/g, '');
+        }
+
+        // Автоматически добавляем код Туркменистана
+        if (!numbers.startsWith('+993')) {
+            // Удаляем все цифры после первого плюса
+            if (numbers.startsWith('+')) {
+                numbers = '+' + numbers.substring(1).replace(/\D/g, '');
+            }
+            numbers = '+993' + numbers.replace(/^(\+993)?/g, '');
+        }
+
+        // Ограничиваем длину номера (код страны + 8 цифр)
+        if (numbers.length > 12) {
+            numbers = numbers.substring(0, 12);
+        }
+
+        this.value = numbers;
+    });
+
+    // Защита кода страны от удаления
+    input.addEventListener('keydown', function(e) {
+        const cursorPosition = this.selectionStart;
+
+        // Блокируем Backspace и Delete перед кодом страны
+        if (cursorPosition <= 4 && (e.key === 'Backspace' || e.key === 'Delete')) {
+            e.preventDefault();
+        }
+    });
+});
+
+    // Обработчики форм
+    const lostForm = document.querySelector('#lost form:nth-of-type(2)');
+    const foundForm = document.querySelector('#found form');
+
+    if (lostForm) {
+        lostForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmit(this, 'lost');
+        });
+    }
+
+    if (foundForm) {
+        foundForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmit(this, 'found');
+        });
+    }
+
+    // Функция обработки отправки формы
+    function handleFormSubmit(form, type) {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        // Показываем индикатор загрузки
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+        submitBtn.disabled = true;
+
+        // Двойная отправка: Telegram и Email
+        Promise.all([
+            sendToTelegram(data, type),
+            sendToEmail(data, type)
+        ])
+        .then(() => {
+            showSuccessMessage(form);
+            form.reset();
+        })
+        .catch(error => {
+            showErrorMessage(form, error);
+        })
+        .finally(() => {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        });
+    }
+
+    // Отправка в Telegram
+    function sendToTelegram(data, type) {
+        return new Promise((resolve, reject) => {
+            const botToken = 'YOUR_TELEGRAM_BOT_TOKEN';
+            const chatId = 'YOUR_TELEGRAM_CHAT_ID';
+
+            let message = `📢 *Новая заявка: ${type === 'lost' ? 'Потерял вещь' : 'Нашел вещь'}*\n\n`;
+
+            // Форматируем данные для Telegram
+            for (const [key, value] of Object.entries(data)) {
+                if (value) {
+                    message += `*${getFieldName(key)}*: ${value}\n`;
+                }
+            }
+
+            // Отправка через Telegram API
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.ok) {
+                    resolve();
+                } else {
+                    reject('Ошибка отправки в Telegram: ' + result.description);
+                }
+            })
+            .catch(error => reject('Ошибка сети: ' + error.message));
+        });
+    }
+
+    // Отправка на Email
+    function sendToEmail(data, type) {
+        return new Promise((resolve, reject) => {
+            const emailData = {
+                service_id: 'YOUR_EMAILJS_SERVICE_ID',
+                template_id: 'YOUR_EMAILJS_TEMPLATE_ID',
+                user_id: 'YOUR_EMAILJS_USER_ID',
+                template_params: {
+                    ...data,
+                    subject: `Новая заявка: ${type === 'lost' ? 'Потеря' : 'Находка'}`,
+                    type: type === 'lost' ? 'Потеря' : 'Находка'
+                }
+            };
+
+            // Отправка через EmailJS
+            fetch('https://api.emailjs.com/api/v1.0/email/send', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(emailData)
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    resolve();
+                } else {
+                    reject('Ошибка отправки email: ' + response.statusText);
+                }
+            })
+            .catch(error => reject('Ошибка сети: ' + error.message));
+        });
+    }
+
+    // Вспомогательные функции
+    function getFieldName(key) {
+        const names = {
+            'category': 'Категория',
+            'description': 'Описание',
+            'date': 'Дата',
+            'location': 'Место',
+            'phone': 'Телефон',
+            'email': 'Email',
+            'handover': 'Способ передачи'
+        };
+        return names[key] || key;
+    }
+
+    function showSuccessMessage(form) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'success-message';
+        messageDiv.innerHTML = `
+            <div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center;">
+                <h4><i class="fas fa-check-circle" style="color: #4CAF50;"></i> Заявка отправлена успешно!</h4>
+                <p>Мы свяжемся с вами в ближайшее время</p>
+            </div>
+        `;
+        form.parentNode.insertBefore(messageDiv, form.nextSibling);
+
+        // Автоматически скрываем сообщение через 5 секунд
+        setTimeout(() => {
+            messageDiv.style.opacity = '0';
+            setTimeout(() => messageDiv.remove(), 500);
+        }, 5000);
+    }
+
+    function showErrorMessage(form, error) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'error-message';
+        messageDiv.innerHTML = `
+            <div style="background-color: #ffebee; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center;">
+                <h4><i class="fas fa-exclamation-circle" style="color: #f44336;"></i> Ошибка отправки</h4>
+                <p>${error || 'Попробуйте еще раз позже'}</p>
+            </div>
+        `;
+        form.parentNode.insertBefore(messageDiv, form.nextSibling);
+    }
+
+    // Фильтрация находок (если нужно)
+    const categoryFilter = document.getElementById('category-filter');
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', function() {
+            const category = this.value;
+            document.querySelectorAll('.find-card').forEach(card => {
+                card.style.display = (category === 'all' || card.querySelector('.find-category').textContent === category)
+                    ? 'block'
+                    : 'none';
+            });
+        });
+    }
+
+    // ======= КОД ДЛЯ КНОПКИ "НАВЕРХ" =======
+    const backToTopBtn = document.getElementById('backToTop');
+
+    // Показываем/скрываем кнопку при прокрутке
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+
+    // Плавная прокрутка при клике
+    backToTopBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+    </script>
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html>
